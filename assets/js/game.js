@@ -1,65 +1,66 @@
-// Game State
-// "WIN"- Player robot has defeated all enemy-robots
-//        *Fight all enemy-robots
-          // *Defeat each enemy-robot
-// "LOSE"-Player robot's health is zero or ledd
-
-// this creates a function named fight
-var playerName = window.prompt("What is your robot's name");
+var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
-var playerMoney = 10
+var playerMoney = 10;
 
-var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
+var enemyName = "Roborto";
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-// Alert players that they're starting the round
-var fight = function(enemyName) {
-  // Subtract the value of `playerAttack` from the value of `enemyHealth` and use that result to update the value in the `enemyHealth` variable
-  var promptFight = window.prompt("Would you like to Fight or Skip this battle? Enter Fight or SKIP to choose.");
-  // if player choses fight, then fight
-  if(promptFight === "fight" || promptFight === "FIGHT"){
-  // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
-    console.log(playerName + " attacked " + enemyName + ". " + enemyName + " still has " + enemyHealth + " health remaining.");
+
+// alerts players they are starting the match
+var fight = function() {
+  window.alert("welcome to Robot Gladiators");
+    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? enter "FiGHT" or "SKIP" to choose.')
+
+// if player chooses to fight, then fight
+if (promptFight === "fight" || promptFight === "FIGHT") {
+
+// remove the value of the "playerAttack" from the value of the "enemyHealth" variable
+enemyHealth = enemyHealth - playerAttack;
+
+// log a resulting message to the console so we know that it worked.
+console.log(
+  playerName + " has attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+
 // check enemy health
-if(enemyHealth <=0){
+if (enemyHealth <= 0){
   window.alert(enemyName + " has died.");
-} else{
+} else {
   window.alert(enemyName + " still has " + enemyHealth + " health left.");
 }
-// remove player's health by subtracting the amount set in the enemyAttack variable
+
+// remove the value of the enemy attack from the value of the player health variable
 playerHealth = playerHealth - enemyAttack;
-console.log(enemyName + " has attacked " + playerName + " ." + playerName + " stil has " + playerHealth +" health remaining.");
-  // check player's health
-if(playerHealth <=0){
-  window.alert(playerName + " has died");
-} else{
-    window.alert(playerName + " staill has " + playerHealth + " health left.");
+
+// / log a resulting message to the console so we know that it worked.
+console.log(
+  enemyName + " has attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining");
+
+// check player health
+if (playerHealth <= 0) {
+  window.alert(playerName + " has died.")
+} else {
+  window.alert(playerName + " still has " + playerHealth + " health remaining.");
 }
-// if player choses skip
-} else if(promptFight === "skip" || promptFight === "SKIP"){
-// confirm player wants to skip
-var confirmSkip = window.confirm( "Are you sure you want to quit?");
-// if yes
+// if player chooses skip
+} else if (promptFight === "skip" || promptFight === "SKIP") {
+// confim playerwants to skip
+var confirmSkip = window.confirm(" Are you sure you'd like to quit?");
+
+// if yes (true), leave fight
 if (confirmSkip) {
-    window.alert( playerName + " has decided to skip this fight. Goodby!");
-    // subtract money from playerMoney for skipping
+    window.alert(playerName + " has decideed to skip this fight. Goodbye");
+    // subtract money for losing
     playerMoney = playerMoney - 2;
-} 
-// if no (false), ask question again by running fight() again
-else{
+}
+// if no (false), ask the question again by running fight
+else {
   fight();
-}  
-  window.alert(" You need to pick a valid option.")
-} else{
-    window.alert("You need to choose a valid option. Try again")
-  
 }
 
+} else {
+  window.alert("You need to choose a valid option.");
+  }
 };
-
-for(var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames[i]);
-}
+fight();
