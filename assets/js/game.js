@@ -9,6 +9,14 @@
 // fight function
 var fight = function(enemy) {
 
+  // random order
+    var isPlayerTurn = true;
+
+  // randomly change turn order
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
+
   // reapeat and executes as long as the enemy-robot is alive
   while (playerInfo.health > 0 && enemy.health > 0) {
     fightOrSkip();
