@@ -60,7 +60,8 @@ var fight = function(enemy) {
     } else {
       window.alert(playerInfo.name + " still has " + playerInfo.health + " health remaining.");
     }
-
+     // switch turn order for next round
+     isPlayerTurn = !isPlayerTurn;
   }
 };
 
