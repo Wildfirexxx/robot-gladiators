@@ -127,26 +127,29 @@ var endGame = function () {
 
 
 
-
 var shop = function () {
+  
+
   // ask the player what the'd like to do
   var shopOptionPrompt = window.prompt(
-    "Would you like to REFILL your health, UPGRADe your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
   );
+
+  // convert answer from prompt to to an actual number
+  shopOptionPrompt = parseInt(shopOptionPrompt); 
+  
   // use switch to carryout action
+  
   switch (shopOptionPrompt) {
-    case "refill":
-    case "REFILL":
+    case 1: 
       playerInfo.refillHealth();
       break;
 
-    case "upgrade":
-    case "UPGRADE":
+    case 2:
       playerInfo.upgradeAttack();
       break;
 
-    case "leave":
-    case "LEAVE":
+    case 3:
       window.alert("leaving store");
 
       // do nothing so function will end
@@ -158,7 +161,7 @@ var shop = function () {
       shop();
       break;
   }
-}
+};
 
 // function to generate random number
 var randomNumber = function (min, max) {
